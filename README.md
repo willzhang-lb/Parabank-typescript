@@ -15,9 +15,9 @@ API automation
 - **Transaction Search by amount**: Searches for transactions based on transfer amount.
   
 ## Technologies Used
-- **Programming Language**: Python
+- **Programming Language**: Typescript
 - **Framework**: Playwright
-- **Dependency Management**: pip
+- **Dependency Management**: npm
 
 
 **Set up local project**
