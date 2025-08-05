@@ -3,8 +3,8 @@ on:
   push:
     branches: [ main, master ]
   paths-ignore:
-  - README.md
-  - playwright.yml
+    - README.md
+    - playwright.yml
 
 jobs:
   playwright:
