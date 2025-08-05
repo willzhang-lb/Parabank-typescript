@@ -11,7 +11,6 @@ export class RegisterPage extends BasePage {
     async fillRegisterInfo() {
         dumpToJson('data/member_info.json', 'Username', this.randomUsername);
         const memberInfo = loadJsonFileInfo('data/member_info.json');
-        console.log('Member Info:', memberInfo);
         await this.page.waitForSelector('h1:has-text("Signing up is easy!")', { state: 'visible' });
         await this.fillForm(memberInfo);
         await this.clickButton('Register');
