@@ -3,17 +3,11 @@
 pipeline {
     agent any
 
-    environment {
-        NODE_VERSION = 'lts/*'
+    tools {
+        nodejs "NodeJS 18" // Use the name configured in Global Tool Configuration
     }
 
     stages {
-        stage('Set up Node.js') {
-            steps {
-                sh 'node -v'
-                sh 'npm -v'
-            }
-        }
         stage('Install dependencies') {
             steps {
                 sh 'npm ci'
