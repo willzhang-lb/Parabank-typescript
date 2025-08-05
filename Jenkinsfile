@@ -6,12 +6,13 @@ pipeline {
     environment {
         NODE_VERSION = 'lts/*'
     }
+    tools {
+        nodejs "nodejs" // Match the name set in Global Tool Configuration
+    }
 
     stages {
         stage('Set up Node.js') {
             steps {
-                // Requires NodeJS plugin in Jenkins and a configured NodeJS tool named 'nodejs'
-                tool name: 'nodejs', type: 'nodejs'
                 sh 'node -v'
                 sh 'npm -v'
             }
