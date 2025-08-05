@@ -3,10 +3,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs "NodeJS 18" // Use the name configured in Global Tool Configuration
-    }
-
     stages {
         stage('Install dependencies') {
             steps {
