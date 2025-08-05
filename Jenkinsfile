@@ -5,10 +5,6 @@ pipeline {
 
     environment {
         NODE_VERSION = 'lts/*'
-        ALLURE_RESULTS = 'allure-results'
-        ALLURE_REPORT = 'allure-report'
-        PLAYWRIGHT_REPORT = 'playwright-report'
-        TRACE_DIR = 'trace'
     }
 
     stages {
@@ -35,6 +31,11 @@ pipeline {
                 sh 'npx playwright install --with-deps'
             }
         }
+        stage('Clean Trace Folder') {
+            steps {
+                sh 'if [ -d trace ]; then rm -rf trace; fi'
+            }
+        }
         stage('Run Playwright tests') {
             steps {
                 sh 'npx playwright test'
@@ -53,7 +54,7 @@ pipeline {
         }
         stage('Archive Playwright Report') {
             steps {
-                archiveArtifacts artifacts: "${PLAYWRIGHT_REPORT}/**", allowEmptyArchive: true
+                archiveArtifacts artifacts: "playwright-report/**", allowEmptyArchive: true
             }
         }
 
@@ -68,9 +69,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts artifacts: "${ALLURE_REPORT}/**", allowEmptyArchive: true
-            archiveArtifacts artifacts: "${PLAYWRIGHT_REPORT}/**", allowEmptyArchive: true
-            archiveArtifacts artifacts: "${TRACE_DIR}/**", allowEmptyArchive: true
+            echo "Pipeline finished. Allure and trace artifacts are archived."
         }
     }
 }

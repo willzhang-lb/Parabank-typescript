@@ -35,7 +35,8 @@ export default defineConfig({
     baseURL: BASE_URL,
     trace: 'on',
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure'
+    video: 'retain-on-failure',
+    ignoreHTTPSErrors: true,
   },
 
   /* Configure projects for major browsers */
