@@ -8,11 +8,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
         stage('Set up Node.js') {
             steps {
                 // Requires NodeJS plugin in Jenkins and a configured NodeJS tool named 'nodejs'
