@@ -1,40 +1,43 @@
-// Jenkinsfile
-
 pipeline {
     agent any
+    tools {
+        nodejs "NodeJS Default"
+    }
 
     stages {
-        stage('Install dependencies') {
+
+        stage('Install Playwright') {
             steps {
-                sh 'npm ci'
+                bat '''
+                    npx playwright install
+                '''
             }
         }
-        stage('Install Playwright Browsers') {
-            steps {
-                sh 'npx playwright install --with-deps'
-            }
-        }
+
         stage('Clean Trace Folder') {
             steps {
-                sh 'if [ -d trace ]; then rm -rf trace; fi'
+                bat 'if exist trace rmdir /s /q trace'
             }
         }
+
         stage('Run Playwright tests') {
             steps {
-                sh 'npx playwright test'
+                bat 'npx playwright test'
             }
         }
+
         stage('Generate Allure report') {
             steps {
-                // Assumes allure-commandline is installed globally or available in PATH
-                sh 'npx allure generate allure-results --clean -o allure-report'
+                bat 'npx allure generate allure-results allure-report'
             }
         }
+
         stage('Archive Allure Report') {
             steps {
                 allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             }
         }
+
         stage('Archive Playwright Report') {
             steps {
                 archiveArtifacts artifacts: "playwright-report/**", allowEmptyArchive: true
@@ -50,6 +53,7 @@ pipeline {
             }
         }
     }
+
     post {
         always {
             echo "Pipeline finished. Allure and trace artifacts are archived."
