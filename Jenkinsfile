@@ -6,9 +6,6 @@ pipeline {
     environment {
         NODE_VERSION = 'lts/*'
     }
-    tools {
-        nodejs "nodejs" // Match the name set in Global Tool Configuration
-    }
 
     stages {
         stage('Set up Node.js') {
