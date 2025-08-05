@@ -38,12 +38,6 @@ pipeline {
             }
         }
 
-        stage('Archive Playwright Report') {
-            steps {
-                archiveArtifacts artifacts: "playwright-report/**", allowEmptyArchive: true
-            }
-        }
-
         stage('Archive Playwright Traces') {
             when {
                 expression { fileExists('trace') }
