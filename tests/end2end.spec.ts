@@ -12,6 +12,7 @@ let newAccount: string | undefined;
 const transferAmount = '1';
     
 test.describe.serial(() => {
+    
     test('Step 1: Register', async ({ page}) => {
         const registerPage = new RegisterPage(page);
         await registerPage.fillRegisterInfo();
