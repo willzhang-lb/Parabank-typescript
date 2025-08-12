@@ -3,6 +3,10 @@ pipeline {
     tools {
         nodejs "NodeJS Default"
     }
+    
+    environment {
+        ENV = 'qa'  // Set environment variable for all steps
+    }
 
     stages {
 
@@ -17,12 +21,6 @@ pipeline {
         stage('Clean Trace Folder') {
             steps {
                 bat 'if exist trace rmdir /s /q trace'
-            }
-        }
-
-        stage('Set Test Environment') {
-            steps {
-                bat 'set ENV=qa'
             }
         }
 

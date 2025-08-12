@@ -19,14 +19,12 @@ jobs:
     - name: Install dependencies
       run: npm ci
     
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-
-    - name: Set Test Environment
-      run: $env:ENV='qa'
-    
-    - name: Run Playwright tests
-      run: npx playwright test
+    - name: Run tests with ENV=qa
+      env:
+        ENV: qa
+      run: |
+        echo "ENV is $ENV"
+        npx playwright test
     
     - name: Generate Allure report
       uses: simple-elf/allure-report-action@master
