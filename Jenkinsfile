@@ -20,6 +20,12 @@ pipeline {
             }
         }
 
+        stage('Set Test Environment') {
+            steps {
+                bat 'set ENV=qa'
+            }
+        }
+
         stage('Run Playwright tests') {
             steps {
                 bat 'npx playwright test'

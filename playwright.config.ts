@@ -1,7 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
 import path from 'path';
+import dotenv from 'dotenv';
 
-const BASE_URL = 'https://parabank.parasoft.com';
+dotenv.config({
+  path: `./env/.env.${process.env.ENV}`
+});
 
 /**
  * Read environment variables from file.
@@ -32,7 +35,7 @@ export default defineConfig({
 ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL: BASE_URL,
+    baseURL: process.env.BASE_URL,
     trace: 'on',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
