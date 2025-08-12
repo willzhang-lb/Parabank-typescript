@@ -14,6 +14,9 @@ RUN npm install -g allure-commandline
 # Copy the rest of your project files
 COPY . .
 
+# Set default environment variable inside container
+ENV ENV=qa
+
 # Expose the report folder (optional)
 VOLUME ["/app/allure-report", "/app/playwright-report", "/app/trace"]
 
