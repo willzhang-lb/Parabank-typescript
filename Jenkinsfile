@@ -10,6 +10,12 @@ pipeline {
 
     stages {
 
+        stage('Install Dependencies') {
+            steps {
+                bat 'npm ci'
+            }
+        }
+
         stage('Install Playwright') {
             steps {
                 bat '''
