@@ -4,8 +4,12 @@ pipeline {
         nodejs "NodeJS Default"
     }
     
+    parameters {
+        choice(name: 'ENV', choices: ['dev', 'qa', 'prod'], description: 'Test Environment')
+    }
+
     environment {
-        ENV = 'qa'  // Set environment variable for all steps
+        ENV = "${params.ENV}"
     }
 
     stages {
@@ -32,13 +36,16 @@ pipeline {
 
         stage('Run Playwright tests') {
             steps {
-                bat 'npx playwright test'
+                bat '''
+                    echo "Running tests in %ENV% environment"
+                    npx playwright test
+                '''
             }
         }
 
         stage('Generate Allure report') {
             steps {
-                bat 'npx allure generate allure-results allure-report'
+                bat 'allure generate allure-results --clean -o allure-report'
             }
         }
 
@@ -53,7 +60,7 @@ pipeline {
                 expression { fileExists('test-results') }
             }
             steps {
-                archiveArtifacts artifacts: 'test-results/**.zip', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'test-results/**/*.zip', allowEmptyArchive: true
             }
         }
     }
