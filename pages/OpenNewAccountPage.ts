@@ -25,7 +25,7 @@ export class OpenAccountPage extends BasePage {
         const accountId = await this.rightPanel.locator('#newAccountId').textContent();
         this.newAccountId = accountId === null ? undefined : accountId;
         if (this.newAccountId) {
-            dumpToJson('data/account_info.json', 'new account', this.newAccountId);
+            dumpToJson('data/account_info.json', 'New Account', this.newAccountId);
         }
         return this.newAccountId;
     }

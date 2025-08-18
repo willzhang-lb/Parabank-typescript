@@ -2,7 +2,7 @@ import { test, expect, APIRequestContext, APIResponse } from '@playwright/test';
 import { FindTransactionsAPI } from '../api/findTransactions/findTransactionsApi';
 import accountInfo from '../data/account_info.json';
 
-const newAccount = accountInfo['new account'];
+const newAccount = accountInfo['New Account'];
 
 test('get transactions', async ({ request }) => {
   // Call the API endpoint

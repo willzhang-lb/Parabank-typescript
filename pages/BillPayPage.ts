@@ -10,7 +10,7 @@ export class BillPayPage extends BasePage {
     async fillBillInfo() {
         const billInfo = loadJsonFileInfo('data/bill_info.json');
         const accountInfo = loadJsonFileInfo('data/account_info.json');
-        billInfo['From account'] = accountInfo['new account'];
+        billInfo['From account'] = accountInfo['New Account'];
         await this.page.waitForSelector('h1:has-text("Bill Payment Service")', { state: 'visible' });
         await this.fillForm(billInfo);
         await this.clickButton('Send Payment');
