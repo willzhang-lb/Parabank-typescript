@@ -8,7 +8,8 @@ import { FindTransactionsPage } from '../pages/FindTransactionsPage';
 
 let newAccount: string | undefined;
 const transferAmount = '1';
-    
+   
+
 test.describe.serial(() => {
 
     test('Step 2: Open New Account', async ({ page }) => {
