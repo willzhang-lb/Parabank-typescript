@@ -5,7 +5,7 @@ import { generateUsername, dumpToJson, loadJsonFileInfo } from '../utility';
 export class RegisterPage extends BasePage {
     constructor(page: Page) {
         super(page);
-        page.goto('/parabank/register.htm');
+        this.navigateToHomePage();
     }
 
     async fillRegisterInfo() {

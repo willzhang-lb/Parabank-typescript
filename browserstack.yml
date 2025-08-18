@@ -1,0 +1,14 @@
+userName: willzhang_p8PoIu
+accessKey: WE9pi3TQVKccnyXLzV4z
+platforms:
+  - os: Windows
+    osVersion: 11
+    browserName: chrome
+    browserVersion: latest
+  - os: OS X
+    osVersion: Ventura
+    browserName: playwright-webkit
+    browserVersion: latest
+  - deviceName: Samsung Galaxy S23 Ultra
+    browserName: chrome
+    osVersion: 13.0

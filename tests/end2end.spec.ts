@@ -1,7 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
-import { LoginPage } from '../pages/LoginPage';
-import { RegisterPage } from '../pages/RegisterPage';
 import { BillPayPage } from '../pages/BillPayPage';
 import { OpenAccountPage } from '../pages/OpenNewAccountPage';
 import { TransferFundsPage } from '../pages/TransferFundsPage';
@@ -12,12 +10,6 @@ let newAccount: string | undefined;
 const transferAmount = '1';
     
 test.describe.serial(() => {
-    
-    test('Step 1: Register', async ({ page}) => {
-        const registerPage = new RegisterPage(page);
-        await registerPage.fillRegisterInfo();
-        await registerPage.verifyRegisterSuccess();
-    });
 
     test('Step 2: Open New Account', async ({ page }) => {
         const homePage = new HomePage(page);

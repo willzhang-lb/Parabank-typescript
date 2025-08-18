@@ -18,7 +18,7 @@ COPY . .
 ENV ENV=qa
 
 # Expose the report folder (optional)
-VOLUME ["/app/allure-report", "/app/playwright-report", "/app/trace"]
+VOLUME ["/app/allure-report", "/app/playwright-report", "/app/test-results"]
 
 # Default command (can be overridden in Jenkins)
 CMD ["npx", "playwright", "test"]
